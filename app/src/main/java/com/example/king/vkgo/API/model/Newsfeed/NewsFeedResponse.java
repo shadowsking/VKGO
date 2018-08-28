@@ -1572,59 +1572,59 @@ public class NewsFeedResponse {
                     private String description;
                     private PhotoBeanX photo;
 
-                    public static LinkBeen objectFromData(String str, String key) {
+                public static LinkBeen objectFromData(String str, String key) {
 
-                        try {
-                            JSONObject jsonObject = new JSONObject(str);
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
 
-                            return new Gson().fromJson(jsonObject.getString(str), LinkBeen.class);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        return null;
+                        return new Gson().fromJson(jsonObject.getString(str), LinkBeen.class);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
-                    public String getUrl() {
-                        return url;
-                    }
-
-                    public void setUrl(String url) {
-                        this.url = url;
-                    }
-
-                    public String getTitle() {
-                        return title;
-                    }
-
-                    public void setTitle(String title) {
-                        this.title = title;
-                    }
-
-                    public String getCaption() {
-                        return caption;
-                    }
-
-                    public void setCaption(String caption) {
-                        this.caption = caption;
-                    }
-
-                    public String getDescription() {
-                        return description;
-                    }
-
-                    public void setDescription(String description) {
-                        this.description = description;
-                    }
-
-                    public PhotoBeanX getPhoto() {
-                        return photo;
-                    }
-
-                    public void setPhoto(PhotoBeanX photo) {
-                        this.photo = photo;
-                    }
+                    return null;
                 }
+
+                public String getUrl() {
+                    return url;
+                }
+
+                public void setUrl(String url) {
+                    this.url = url;
+                }
+
+                public String getTitle() {
+                    return title;
+                }
+
+                public void setTitle(String title) {
+                    this.title = title;
+                }
+
+                public String getCaption() {
+                    return caption;
+                }
+
+                public void setCaption(String caption) {
+                    this.caption = caption;
+                }
+
+                public String getDescription() {
+                    return description;
+                }
+
+                public void setDescription(String description) {
+                    this.description = description;
+                }
+
+                public PhotoBeanX getPhoto() {
+                    return photo;
+                }
+
+                public void setPhoto(PhotoBeanX photo) {
+                    this.photo = photo;
+                }
+            }
             }
 
             public static class CopyHistoryBean {

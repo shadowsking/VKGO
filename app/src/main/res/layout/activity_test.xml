@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#f1f1f1">
+        android:background="#d2d2d2">
     </FrameLayout>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#e4e4e4"
         design:menu="@menu/item">
     </android.support.design.widget.BottomNavigationView>
 

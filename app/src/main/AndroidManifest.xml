@@ -3,6 +3,7 @@
     package="com.example.king.vkgo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +21,7 @@
         </activity>
         <activity android:name=".mvp.View.Authorization.AuthorizationActivity" />
         <activity android:name=".mvp.View.TestActivity" />
-        <activity android:name=".mvp.View.Profile.ProfileFragment"></activity>
+        <!--<activity android:name=".mvp.View.Profile.ProfileFragment"></activity>!-->
     </application>
 
 </manifest>

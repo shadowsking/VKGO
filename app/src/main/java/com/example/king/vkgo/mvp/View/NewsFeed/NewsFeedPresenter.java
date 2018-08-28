@@ -1,4 +1,4 @@
-package com.example.king.vkgo.mvp.Presenter;
+package com.example.king.vkgo.mvp.View.NewsFeed;
 
 import com.example.king.vkgo.API.NetworkManager;
 import com.example.king.vkgo.API.model.Newsfeed.NewsFeedResponse;
@@ -9,6 +9,8 @@ import com.example.king.vkgo.mvp.View.NewsFeed.NewsFeedView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by KING on 17.12.2017.
@@ -27,16 +29,12 @@ public class NewsFeedPresenter extends BasePresenter<NewsFeedView>{
         getNewsFeed("post");
     }
 
-    public void getNewsFeed(String filters){
-        mNetworkManager.getmApiService().getNewsFeed(filters).enqueue(new Callback<NewsFeedResponse>() {
-            @Override
-            public void onResponse(Call<NewsFeedResponse> call, Response<NewsFeedResponse> response) {
-                getView().onNewsFeed(response.body());
-            }
+    public void getNewsFeed(String filters) {
+        mNetworkManager.getmApiService().getNewsFeed(filters)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> getView().onNewsFeed(response), throwableEcho->{});
 
-            @Override
-            public void onFailure(Call<NewsFeedResponse> call, Throwable t) {
-            }
-        });
     }
+
 }

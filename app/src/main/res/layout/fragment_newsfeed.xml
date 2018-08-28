@@ -4,6 +4,7 @@
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="com.example.king.vkgo.mvp.View.NewsFeed.NewsFeedFragment">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/newsFeedRecyclerView"

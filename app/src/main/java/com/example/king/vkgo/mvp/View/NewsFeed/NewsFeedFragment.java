@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import com.example.king.vkgo.API.model.Newsfeed.NewsFeedResponse;
 import com.example.king.vkgo.Constants;
 import com.example.king.vkgo.R;
-import com.example.king.vkgo.mvp.Presenter.NewsFeedPresenter;
 
 import android.support.v7.widget.LinearLayoutManager;
 

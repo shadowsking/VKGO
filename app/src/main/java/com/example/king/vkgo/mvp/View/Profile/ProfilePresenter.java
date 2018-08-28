@@ -1,4 +1,4 @@
-package com.example.king.vkgo.mvp.Presenter;
+package com.example.king.vkgo.mvp.View.Profile;
 
 import android.util.Log;
 import com.example.king.vkgo.API.NetworkManager;
@@ -11,6 +11,8 @@ import com.example.king.vkgo.mvp.View.Profile.ProfileView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by KING on 16.12.2017.
@@ -31,39 +33,26 @@ public class ProfilePresenter extends BasePresenter<ProfileView>{
         //getUser();
     }
 
-    public void getProfileInfo(){
-        mNetworkManager.getmApiService().getProfileInfo().enqueue(new Callback<UserAccountResponse>() {
-            @Override
-            public void onResponse(Call<UserAccountResponse> call, Response<UserAccountResponse> response) {
-                Log.d("Response", response.body().getResponse().toString());
-                getView().onProfileInfo(response.body());
-            }
-            @Override
-            public void onFailure(Call<UserAccountResponse> call, Throwable t) {
-            }
-        });
-    }
+    public void getProfileInfo() {
+        mNetworkManager.getmApiService().getProfileInfo()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> getView().onProfileInfo(response),  throwableEcho->{});
 
+    }
     /*
     public void getUser(){
         getUserDetailInfo(user_id, Constants.fields);
         getView().onUserDetailInfo(userDetailInfo);
     }*/
 
-    public void getUserDetailInfo(String user_id, String fields){
-        mNetworkManager.getmApiService().getUserDetailInfo(user_id, fields).enqueue(new Callback<UserDetailInfo>() {
-            @Override
-            public void onResponse(Call<UserDetailInfo> call, Response<UserDetailInfo> response) {
-                getView().onUserDetailInfo(response.body());
-                //setUserDetailInfo(response.body());
-            }
+    public void getUserDetailInfo(String user_id, String fields) {
+        mNetworkManager.getmApiService().getUserDetailInfo(user_id, fields)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> getView().onUserDetailInfo(response),  throwableEcho->{});
 
-            @Override
-            public void onFailure(Call<UserDetailInfo> call, Throwable t) {
-            }
-        });
     }
-
 
     /*
     public void setUserDetailInfo(UserDetailInfo userDetailInfo){

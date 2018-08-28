@@ -38,7 +38,6 @@ public class AuthorizationActivity extends AppCompatActivity implements Authoriz
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageFinished(final WebView view, String url) {
-                Log.d("LOL",url);
                 if(url.startsWith(constants.redirect_URL)){
                     access_token = url.split("#")[1].split("&")[0].split("=")[1];
                     user_id = url.split("#")[1].split("&")[2].split("=")[1];
@@ -52,7 +51,7 @@ public class AuthorizationActivity extends AppCompatActivity implements Authoriz
                 }
             }
         });
-        finish();
+        //finish();
     }
 
     @Override
